@@ -16,3 +16,7 @@ func get_direction() -> Vector2:
 	var y_direction := Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	
 	return Vector2(x_direction, y_direction)
+
+func hurt() -> void:
+	$AnimationPlayer.stop()
+	$AnimationPlayer.play("hurt")

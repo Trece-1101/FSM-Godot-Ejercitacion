@@ -23,6 +23,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	text_panel.text = state_text
+	
 	if not state in [States.IDLE]:
 		turret_arm.look_at(player.get_global_position())
 	

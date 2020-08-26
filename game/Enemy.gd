@@ -28,9 +28,9 @@ func _process(delta: float) -> void:
 		turret_arm.look_at(player.get_global_position())
 	
 	if state in [States.SHOOTING] and can_shoot:
+		shoot()
 		can_shoot = false
 		shoot_timer.start()
-		shoot()
 
 func shoot() -> void:
 	var container := owner.get_node("BulletContainer")
@@ -57,7 +57,8 @@ func change_state(new_state: int) -> void:
 
 
 func _on_ShootRange_body_entered(body: Node) -> void:
-	change_state(States.ALERT)
+	if body is Player:
+		change_state(States.ALERT)
 
 
 func _on_ShootRange_body_exited(body: Node) -> void:
